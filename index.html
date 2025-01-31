@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutomaFood IA - Assistente Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --gradient-primary: linear-gradient(45deg, #2b6cb0, #4299e1);
+            --gradient-secondary: linear-gradient(45deg, #48bb78, #38b2ac);
+            --gradient-dark: linear-gradient(160deg, #0f172a, #1e293b);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        body {
+            background: var(--gradient-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at 75% 30%, #1e3a8a55 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(120deg, #63b3ed 0%, #4299e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.5));
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-primary);
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-secondary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .steps {
+            counter-reset: step;
+            padding: 4rem 0;
+        }
+
+        .step-item {
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.6));
+            margin-bottom: 2rem;
+            position: relative;
+            border: 1px solid rgba(100, 116, 139, 0.15);
+        }
+
+        .step-item::before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(66, 153, 225, 0.15);
+        }
+
+        .cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(45deg, #2b6cb0, #4299e1);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            margin: 4rem 0;
+        }
+
+        .cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.1) 100%);
+            pointer-events: none;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .step-item::before {
+                font-size: 3rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">AutomaFood IA</div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>🤖 Seu Assistente Pessoal<br><span class="text-gradient">Movido a IA</span></h1>
+                <p class="text-secondary">Automação inteligente para suas necessidades diárias</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <i class="fas fa-comment-dots feature-icon"></i>
+                        <h3>Conversa Natural</h3>
+                        <p>Interação humana através de processamento de linguagem avançado</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-microchip feature-icon"></i>
+                        <h3>Automação Inteligente</h3>
+                        <p>Integração perfeita com serviços e plataformas populares</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <h3>Segurança Máxima</h3>
+                        <p>Criptografia de ponta a ponta em todas as transações</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps container">
+            <h2 class="text-gradient">Funcionamento</h2>
+            <div class="step-item">
+                <h3>Análise de Contexto</h3>
+                <p>Reconhecimento de padrões e preferências do usuário</p>
+            </div>
+            <div class="step-item">
+                <h3>Busca Otimizada</h3>
+                <p>Seleção inteligente de estabelecimentos com base em múltiplos critérios</p>
+            </div>
+            <div class="step-item">
+                <h3>Execução Automatizada</h3>
+                <p>Processamento de pagamento e confirmação instantânea</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="cta">
+                <h2>Junte-se à Revolução da Automação Inteligente</h2>
+                <p>Em breve disponível para o público geral</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container" style="padding: 2rem 0; text-align: center;">
+        <p>&copy; 2024 AutomaFood IA. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Efeito Parallax 3D
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.feature-card');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = rect.left + rect.width/2;
+                const cardY = rect.top + rect.height/2;
+                
+                const angleX = (mouseY - cardY) / 30;
+                const angleY = (mouseX - cardX) / -30;
+
+                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02)`;
+            });
+        });
+
+        // Reset da animação ao sair do card
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            });
+        });
+
+        // Animação de Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .step-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
