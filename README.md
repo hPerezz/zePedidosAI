@@ -4,11 +4,16 @@ zéPedidosAI é um assistente inteligente que utiliza **@elizaOS** para criar pe
 
 ## 🚀 Como funciona?
 
-✅ Ela extrai o que quer (ex: “tava com vontade de X-Bacon hoje!”)
-✅ Coleta os números no Google (hamburguerias em Itajubá)
-✅ Testa quais têm WhatsApp
-✅ Manda um pedido automático pro mais bem avaliado! 
-📲 “Opa, é da {nome da hamburgueria}? Queria um X-Bacon pra entrega no {meu endereço}!”
+- Extrai o que quer por voz ou texto
+- Coleta fornecetores na região
+- Testa quais têm WhatsApp
+- Manda um pedido automático pro mais bem avaliado no Google!
+
+Exemplo de funcionamento:
+- usuário: "Poxa, hoje queria um x-salada!"
+- zé pesquisa lanchonetes próximas
+- zé acha a que tem melhor avalização
+- manda uma mensagem no whatsapp "Opa, é da {nome da lanchonete}? Vou pedir um X-Salada pra entregar no {seu endereco}."
 
 
 ## 🛠️ Tecnologia  
@@ -16,10 +21,7 @@ zéPedidosAI é um assistente inteligente que utiliza **@elizaOS** para criar pe
 - ChatGPT-4 (OpenAI API)
 - API Google
 - ElizaOS
-
-
-## 📦 Instalação e Uso  
-
+- Whatsapp
 
 
 
